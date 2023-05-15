@@ -34,6 +34,12 @@ jobs:
           # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
+          name: make_reqs
+          command: touch /home/circleci/project/requirements.txt
+      - run:
+          name: write_reqs
+          command: echo 'pytest == 2.9.1' >> /home/circleci/project/requirements.txt
+      - run:
           name: install_pip
           command: /home/circleci/.pyenv/versions/3.10.2/bin/python3.10 -m pip install --upgrade pip
       - run:
